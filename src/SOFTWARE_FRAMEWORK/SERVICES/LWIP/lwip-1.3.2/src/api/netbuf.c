@@ -45,7 +45,7 @@
 #include "lwip/netbuf.h"
 #include "lwip/memp.h"
 
-//#include <string.h>
+#include <string.h>
 
 /**
  * Create (allocate) and initialize a new netbuf.

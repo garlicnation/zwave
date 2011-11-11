@@ -111,7 +111,7 @@ struct netconn *pxZwaveListener, *pxNewConnection;
 	for( ;; )
 	{
 		/* Wait for a first connection. */
-		pxNewConnection = netconn_accept(pxHTTPListener);
+		pxNewConnection = netconn_accept(pxZwaveListener);
 		vParTestSetLED(webCONN_LED, pdTRUE);
 
 		if(pxNewConnection != NULL)

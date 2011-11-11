@@ -65,17 +65,6 @@
 #include "conf_eth.h"
 #include "macb.h"
 
-#if (HTTP_USED == 1)
-  #include "BasicWEB.h"
-#endif
-
-#if (TFTP_USED == 1)
-  #include "BasicTFTP.h"
-#endif
-
-#if (SMTP_USED == 1)
-  #include "BasicSMTP.h"
-#endif
 
 /* lwIP includes */
 #include "lwip/sys.h"
@@ -137,26 +126,26 @@ portTASK_FUNCTION( vStartEthernetTask, pvParameters )
    /* Setup lwIP. */
    prvlwIPInit();
 
-#if (HTTP_USED == 1)
-   /* Create the WEB server task.  This uses the lwIP RTOS abstraction layer.*/
-   sys_thread_new( "WEB", vBasicWEBServer, ( void * ) NULL,
-                   lwipBASIC_WEB_SERVER_STACK_SIZE,
-                   lwipBASIC_WEB_SERVER_PRIORITY );
-#endif
-
-#if (TFTP_USED == 1)
-   /* Create the TFTP server task.  This uses the lwIP RTOS abstraction layer.*/
-   sys_thread_new( "TFTP", vBasicTFTPServer, ( void * ) NULL,
-                   lwipBASIC_TFTP_SERVER_STACK_SIZE,
-                   lwipBASIC_TFTP_SERVER_PRIORITY );
-#endif
-
-#if (SMTP_USED == 1)
-   /* Create the SMTP Client task.  This uses the lwIP RTOS abstraction layer.*/
-   sys_thread_new( "SMTP", vBasicSMTPClient, ( void * ) NULL,
-                   lwipBASIC_SMTP_CLIENT_STACK_SIZE,
-                   lwipBASIC_SMTP_CLIENT_PRIORITY );
-#endif
+//#if (HTTP_USED == 1)
+//   /* Create the WEB server task.  This uses the lwIP RTOS abstraction layer.*/
+//   sys_thread_new( "WEB", vBasicWEBServer, ( void * ) NULL,
+//                   lwipBASIC_WEB_SERVER_STACK_SIZE,
+//                   lwipBASIC_WEB_SERVER_PRIORITY );
+//#endif
+//
+//#if (TFTP_USED == 1)
+//   /* Create the TFTP server task.  This uses the lwIP RTOS abstraction layer.*/
+//   sys_thread_new( "TFTP", vBasicTFTPServer, ( void * ) NULL,
+//                   lwipBASIC_TFTP_SERVER_STACK_SIZE,
+//                   lwipBASIC_TFTP_SERVER_PRIORITY );
+//#endif
+//
+//#if (SMTP_USED == 1)
+//   /* Create the SMTP Client task.  This uses the lwIP RTOS abstraction layer.*/
+//   sys_thread_new( "SMTP", vBasicSMTPClient, ( void * ) NULL,
+//                   lwipBASIC_SMTP_CLIENT_STACK_SIZE,
+//                   lwipBASIC_SMTP_CLIENT_PRIORITY );
+//#endif
   // Kill this task.
   vTaskDelete(NULL);
 }

@@ -52,7 +52,7 @@
 
   This file was adapted from a FreeRTOS lwIP slip demo supplied by a third
   party.
-*/
+ */
 
 
 
@@ -83,13 +83,19 @@
 /* ethernet includes */
 #include "ethernet.h"
 
+#include "usart.h"
+
+#include "ipc.h"
+
 
 /*! The port on which we listen. */
-#define zwavePORT		( 21 )
+#define zwavePORT		( 23 )
 
+
+portCHAR response[100];
 
 /*! Function to process the current connection */
-static void prvweb_ParseHTMLRequest( struct netconn *pxNetCon );
+static void prvweb_ParseZWaveRequest( struct netconn *pxNetCon );
 
 
 /*! \brief WEB server main task
@@ -100,26 +106,32 @@ static void prvweb_ParseHTMLRequest( struct netconn *pxNetCon );
  */
 portTASK_FUNCTION( vBasicZwaveServer, pvParameters )
 {
-struct netconn *pxZwaveListener, *pxNewConnection;
+	struct netconn *pxZwaveListener, *pxNewConnection;
+
+	zw_tcp_recv_queue = xQueueCreate(100, 1);
 
 	/* Create a new tcp connection handle */
+	vParTestToggleLED(1);
+	vTaskDelay(500*portTICK_RATE_MS);
+	vParTestToggleLED(1);
 	pxZwaveListener = netconn_new( NETCONN_TCP );
 	netconn_bind(pxZwaveListener, NULL, zwavePORT );
 	netconn_listen( pxZwaveListener );
-
+	vTaskDelay(500*portTICK_RATE_MS);
+	vParTestToggleLED(2);
+	vTaskDelay(1000*portTICK_RATE_MS);
+	vParTestToggleLED(2);
 	/* Loop forever */
 	for( ;; )
 	{
 		/* Wait for a first connection. */
 		pxNewConnection = netconn_accept(pxZwaveListener);
-		vParTestSetLED(webCONN_LED, pdTRUE);
 
 		if(pxNewConnection != NULL)
 		{
-			prvweb_ParseHTMLRequest(pxNewConnection);
+			prvweb_ParseZWaveRequest(pxNewConnection);
 		}/* end if new connection */
-
-		vParTestSetLED(webCONN_LED, pdFALSE);
+		vTaskDelay(500*portTICK_RATE_MS);
 
 	} /* end infinite loop */
 }
@@ -131,28 +143,36 @@ struct netconn *pxZwaveListener, *pxNewConnection;
  *  \param pxNetCon   Input. The netconn to use to send and receive data.
  *
  */
-static void prvweb_ParseHTMLRequest( struct netconn *pxNetCon )
+static void prvweb_ParseZWaveRequest( struct netconn *pxNetCon )
 {
-struct netbuf *pxRxBuffer;
-portCHAR *pcRxString;
-unsigned portSHORT usLength;
-static unsigned portLONG ulPageHits = 0;
+	struct netbuf *pxRxBuffer;
+	portCHAR *pcRxString;
+	unsigned portSHORT usLength;
+	strcpy(response, "dicks\n");
+	char to_send[100];
+	size_t to_send_idx = 0;
 
-	/* We expect to immediately get data. */
-	pxRxBuffer = netconn_recv( pxNetCon );
 
-	if( pxRxBuffer != NULL )
-	{
-		/* Where is the data? */
-		netbuf_data( pxRxBuffer, ( void * ) &pcRxString, &usLength );
-
-		/* Is this a GET?  We don't handle anything else. */
-		if(( NULL != pcRxString               )
-		&& ( !strncmp( pcRxString, "GET", 3 ) ))
-		{
+	while((pxNetCon->err & ERR_CLSD) == 0){
+		pxRxBuffer = netconn_recv(pxNetCon);
+		if (pxRxBuffer){
+			xQueueSend(zw_tcp_recv_queue, &pxRxBuffer, 100);
 		}
-		netbuf_delete( pxRxBuffer );
+		if (usart_recv_queue && uxQueueMessagesWaiting(usart_recv_queue)){
+			vParTestToggleLED(4);
+			while(uxQueueMessagesWaiting(usart_recv_queue)>0 && to_send_idx < 100){
+				vParTestToggleLED(3);
+				xQueueReceive(usart_recv_queue, (to_send+to_send_idx), 100);
+				to_send_idx++;
+			}
+			if (to_send_idx>0){
+				netconn_write(pxNetCon, to_send, to_send_idx, NETCONN_COPY);
+				to_send_idx = 0;
+			}
+		}
+		vTaskDelay(100/portTICK_RATE_MS);
 	}
+	netconn_write(pxNetCon, &response, strlen(response), NETCONN_COPY);
 
 	netconn_close( pxNetCon );
 	netconn_delete( pxNetCon );

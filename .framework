@@ -53,8 +53,7 @@
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/netif/loopif.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/netif/loopif.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/lwip/snmp_structs.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/lwip/snmp_structs.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Demo/Common/include/flop.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/Common/include/flop.h" changed="false"/>
-    <file path="src/NETWORK/ethernet.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/lwIP_AVR32_UC3/NETWORK/ethernet.c" changed="false"/>
-    <file path="src/NETWORK/BasicSMTP/BasicSMTP.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/lwIP_AVR32_UC3/NETWORK/BasicSMTP/BasicSMTP.h" changed="false"/>
+    <file path="src/NETWORK/ethernet.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/lwIP_AVR32_UC3/NETWORK/ethernet.c" changed="true"/>
     <file path="src/SOFTWARE_FRAMEWORK/DRIVERS/INTC/exception.x" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="DRIVERS/INTC/exception.S" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/lwip/api_msg.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/lwip/api_msg.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/core/memp.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/core/memp.c" changed="false"/>
@@ -66,7 +65,7 @@
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Demo/Common/include/AltBlock.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/Common/include/AltBlock.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/core/tcp.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/core/tcp.c" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/api/err.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/api/err.c" changed="false"/>
-    <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Source/queue.c" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="SERVICES/FREERTOS/Source/queue.c" changed="true"/>
+    <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Source/queue.c" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="SERVICES/FREERTOS/Source/queue.c" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/ipv4/lwip/igmp.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/ipv4/lwip/igmp.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/lwip/init.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/lwip/init.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/UTILS/LINKER_SCRIPTS/AT32UC3A/0512/GCC/link_uc3a0512.lds" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="UTILS/LINKER_SCRIPTS/AT32UC3A/0512/GCC/link_uc3a0512.lds" changed="false"/>
@@ -77,22 +76,18 @@
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Source/include/list.h" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="SERVICES/FREERTOS/Source/include/list.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/UTILS/LIBS/NEWLIB_ADDONS/INCLUDE/nlao_io.h" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="UTILS/LIBS/NEWLIB_ADDONS/INCLUDE/nlao_io.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Demo/Common/include/death.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/Common/include/death.h" changed="false"/>
-    <file path="src/NETWORK/BasicTFTP/BasicTFTP.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/lwIP_AVR32_UC3/NETWORK/BasicTFTP/BasicTFTP.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/lwip/tcpip.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/lwip/tcpip.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Demo/Common/include/crflash.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/Common/include/crflash.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/lwip/raw.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/lwip/raw.h" changed="false"/>
-    <file path="src/NETWORK/BasicSMTP/BasicSMTP.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/lwIP_AVR32_UC3/NETWORK/BasicSMTP/BasicSMTP.c" changed="true"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Demo/Common/include/partest.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/Common/include/partest.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Demo/Common/include/AltQTest.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/Common/include/AltQTest.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/DRIVERS/PM/pm.h" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="DRIVERS/PM/pm.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Demo/Common/include/comtest2.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/Common/include/comtest2.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/ipv4/lwip/icmp.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/ipv4/lwip/icmp.h" changed="false"/>
-    <file path="src/NETWORK/BasicWEB/BasicWEB.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/lwIP_AVR32_UC3/NETWORK/BasicWEB/BasicWEB.h" changed="false"/>
-    <file path="src/NETWORK/BasicTFTP/BasicTFTP.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/lwIP_AVR32_UC3/NETWORK/BasicTFTP/BasicTFTP.c" changed="true"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/core/ipv4/igmp.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/core/ipv4/igmp.c" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/UTILS/LIBS/NEWLIB_ADDONS/INCLUDE/nlao_exceptions.h" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="UTILS/LIBS/NEWLIB_ADDONS/INCLUDE/nlao_exceptions.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/lwip/arch.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/lwip/arch.h" changed="false"/>
-    <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Source/tasks.c" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="SERVICES/FREERTOS/Source/tasks.c" changed="true"/>
+    <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Source/tasks.c" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="SERVICES/FREERTOS/Source/tasks.c" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/lwip/netdb.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/lwip/netdb.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/lwip/netifapi.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/lwip/netifapi.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Source/list.c" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="SERVICES/FREERTOS/Source/list.c" changed="false"/>
@@ -100,7 +95,6 @@
     <file path="src/SOFTWARE_FRAMEWORK/UTILS/parts.h" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="UTILS/parts.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/lwip/tcp.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/lwip/tcp.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/DRIVERS/INTC/intc.h" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="DRIVERS/INTC/intc.h" changed="false"/>
-    <file path="src/NETWORK/BasicWEB/BasicWEB.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/lwIP_AVR32_UC3/NETWORK/BasicWEB/BasicWEB.c" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/core/mem.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/core/mem.c" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Source/include/semphr.h" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="SERVICES/FREERTOS/Source/include/semphr.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/lwip/err.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/lwip/err.h" changed="false"/>
@@ -109,7 +103,7 @@
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/ipv4/lwip/inet.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/ipv4/lwip/inet.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/BOARDS/board.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="BOARDS/board.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/lwip/netbuf.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/lwip/netbuf.h" changed="false"/>
-    <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/api/netbuf.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/api/netbuf.c" changed="true"/>
+    <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/api/netbuf.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/api/netbuf.c" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/include/lwip/pbuf.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/include/lwip/pbuf.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Source/portable/MemMang/heap_3.c" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="SERVICES/FREERTOS/Source/portable/MemMang/heap_3.c" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/core/init.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/core/init.c" changed="false"/>
@@ -172,7 +166,7 @@
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/core/ipv4/inet_chksum.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/core/ipv4/inet_chksum.c" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/DRIVERS/PM/power_clocks_lib.c" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="DRIVERS/PM/power_clocks_lib.c" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/LWIP/lwip-1.3.2/src/core/udp.c" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/LWIP/lwip-1.3.2/src/core/udp.c" changed="false"/>
-    <file path="src/SOFTWARE_FRAMEWORK/DRIVERS/MACB/macb.c" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="DRIVERS/MACB/macb.c" changed="true"/>
+    <file path="src/SOFTWARE_FRAMEWORK/DRIVERS/MACB/macb.c" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="DRIVERS/MACB/macb.c" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Demo/Common/include/integer.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/Common/include/integer.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/SERVICES/FREERTOS/Demo/Common/include/BlockQ.h" framework="com.atmel.avr32.sf.uc3" version="1.7.0" source="SERVICES/FREERTOS/Demo/Common/include/BlockQ.h" changed="false"/>
     <file path="src/SOFTWARE_FRAMEWORK/UTILS/PREPROCESSOR/tpaste.h" framework="com.atmel.avr32.sf.uc3a" version="1.7.0" source="UTILS/PREPROCESSOR/tpaste.h" changed="false"/>

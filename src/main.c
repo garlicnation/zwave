@@ -62,6 +62,8 @@
 #include "netif/etharp.h"
 #include "flash.h"
 
+#include "SERIAL/uart_task.h"
+
 /* Priority definitions for most of the tasks in the demo application. */
 #define mainLED_TASK_PRIORITY     ( tskIDLE_PRIORITY + 1 )
 #define mainETH_TASK_PRIORITY     ( tskIDLE_PRIORITY + 1 )
@@ -124,10 +126,12 @@ volatile avr32_pm_t* pm = &AVR32_PM;
 
 	/* Start the flash tasks just to provide visual feedback that the demo is
 	executing. */
-	vStartLEDFlashTasks( mainLED_TASK_PRIORITY );
+	//vStartLEDFlashTasks( mainLED_TASK_PRIORITY );
 
 	/* 2) Start the ethernet tasks launcher. */
 	vStartEthernetTaskLauncher( configMAX_PRIORITIES );
+
+	xTaskCreate(vBasicSerialServer, ( signed char * ) "LEDx", 512, NULL, 1, ( xTaskHandle * ) NULL);
 
 	/* 3) Start FreeRTOS. */
 	vTaskStartScheduler();

@@ -74,6 +74,9 @@
 #include "lwip/stats.h"
 #include "netif/loopif.h"
 
+/*ZWave TCP server includes */
+#include "ZWaveTCP.h"
+
 
 //_____ M A C R O S ________________________________________________________
 
@@ -146,6 +149,7 @@ portTASK_FUNCTION( vStartEthernetTask, pvParameters )
 //                   lwipBASIC_SMTP_CLIENT_STACK_SIZE,
 //                   lwipBASIC_SMTP_CLIENT_PRIORITY );
 //#endif
+   sys_thread_new("ZWave", vBasicZwaveServer, ( void *) NULL, 512, 1);
   // Kill this task.
   vTaskDelete(NULL);
 }

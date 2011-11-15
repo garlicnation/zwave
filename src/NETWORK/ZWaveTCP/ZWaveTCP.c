@@ -92,10 +92,11 @@
 #define zwavePORT		( 23 )
 
 
-portCHAR response[100];
+struct netbuf * pxRxBuffer;
+xSemaphoreHandle xRxSem;
 
 /*! Function to process the current connection */
-static void prvweb_ParseZWaveRequest( struct netconn *pxNetCon );
+static void prvweb_HandleZwaveSession( struct netconn *pxNetCon );
 
 
 /*! \brief WEB server main task
@@ -108,7 +109,9 @@ portTASK_FUNCTION( vBasicZwaveServer, pvParameters )
 {
 	struct netconn *pxZwaveListener, *pxNewConnection;
 
+	/*We create FreeRTOS tools for ipc and locking*/
 	zw_tcp_recv_queue = xQueueCreate(100, 1);
+	xRxSem = xSemaphoreCreateMutex();
 
 	/* Create a new tcp connection handle */
 	vParTestToggleLED(1);
@@ -129,7 +132,7 @@ portTASK_FUNCTION( vBasicZwaveServer, pvParameters )
 
 		if(pxNewConnection != NULL)
 		{
-			prvweb_ParseZWaveRequest(pxNewConnection);
+			prvweb_HandleZwaveSession(pxNewConnection);
 		}/* end if new connection */
 		vTaskDelay(500*portTICK_RATE_MS);
 
@@ -143,20 +146,24 @@ portTASK_FUNCTION( vBasicZwaveServer, pvParameters )
  *  \param pxNetCon   Input. The netconn to use to send and receive data.
  *
  */
-static void prvweb_ParseZWaveRequest( struct netconn *pxNetCon )
+static void prvweb_HandleZwaveSession( struct netconn *pxNetCon )
 {
-	struct netbuf *pxRxBuffer;
 	portCHAR *pcRxString;
 	unsigned portSHORT usLength;
-	strcpy(response, "dicks\n");
 	char to_send[100];
 	size_t to_send_idx = 0;
+	unsigned short i;
 
 
 	while((pxNetCon->err & ERR_CLSD) == 0){
 		pxRxBuffer = netconn_recv(pxNetCon);
-		if (pxRxBuffer){
-			xQueueSend(zw_tcp_recv_queue, &pxRxBuffer, 100);
+		if (pxRxBuffer != NULL){
+			netbuf_data(pxRxBuffer, (void*)&pcRxString, &usLength);
+			vParTestToggleLED(5);
+			for(i = 0; i < usLength; i++){
+				xQueueSend(zw_tcp_recv_queue, pcRxString+i, 100);
+			}
+			netbuf_delete(pxRxBuffer);
 		}
 		if (usart_recv_queue && uxQueueMessagesWaiting(usart_recv_queue)){
 			vParTestToggleLED(4);
@@ -172,9 +179,17 @@ static void prvweb_ParseZWaveRequest( struct netconn *pxNetCon )
 		}
 		vTaskDelay(100/portTICK_RATE_MS);
 	}
-	netconn_write(pxNetCon, &response, strlen(response), NETCONN_COPY);
 
 	netconn_close( pxNetCon );
 	netconn_delete( pxNetCon );
 }
 
+portTASK_FUNCTION( vWaitDataTask , pvParameters ){
+	struct netcon * pxNetCon;
+
+
+	pxNetCon = pvParameters;
+	while((pxNetCon->err & ERR_CLSD) == 0){
+
+	}
+}

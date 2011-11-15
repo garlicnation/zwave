@@ -110,7 +110,7 @@
 #include "queue.h"
 #include "lwip/api.h"
 
-
+#include <stdio.h>
 #include <string.h>
 #include "ipc.h"
 /*! \name USART Settings
@@ -239,10 +239,7 @@ static const usart_options_t USART_OPTIONS =
 portTASK_FUNCTION(vBasicSerialServer, pvParameters)
 {
 	int recieved;
-	int i;
-	struct netbuf * tcp_netbuf;
-	portCHAR * netbufdata;
-	unsigned portSHORT len;
+	char tcp_char;
 	char debug[100];
 	// Configure Osc0 in crystal mode (i.e. use of an external crystal source, with
 	// frequency FOSC0) with an appropriate startup time then switch the main clock
@@ -260,36 +257,24 @@ portTASK_FUNCTION(vBasicSerialServer, pvParameters)
 	// Hello world!
 	for(;;)
 	{
-
-
-		vParTestToggleLED(2);
-		vTaskDelay(100/portTICK_RATE_MS);
-		vParTestToggleLED(2);
-		vTaskDelay(100/portTICK_RATE_MS);
-		usart_write_line(EXAMPLE_USART, "Waiting to recv chars\n");
+		usart_write_line(EXAMPLE_USART, "W\n");
 
 
 		// Press enter to continue.
 		vParTestToggleLED(0);
 		while (!usart_test_hit(EXAMPLE_USART)){
 			if(zw_tcp_recv_queue && uxQueueMessagesWaiting(zw_tcp_recv_queue)){
-				sprintf(debug, "we have %d messages in the queue\n", (int)uxQueueMessagesWaiting(zw_tcp_recv_queue));
+				sprintf(debug, "%d\n", (int)uxQueueMessagesWaiting(zw_tcp_recv_queue));
 				usart_write_line(EXAMPLE_USART, debug);
-				vParTestToggleLED(1);
-				xQueueReceive(zw_tcp_recv_queue, &tcp_netbuf, 100);
-				usart_write_line(EXAMPLE_USART, "recvd data, now calling netbuf_data\n");
-				if(tcp_netbuf!=NULL){
-					netbuf_data(tcp_netbuf, &netbufdata, &len);
-				usart_write_line(EXAMPLE_USART, "netbuf_data called, now writing chars to usart\n");
-				}else{
-					usart_write_line(EXAMPLE_USART, "netbuf_data not called, something null in the queue\n");
+				while(uxQueueMessagesWaiting(zw_tcp_recv_queue)>0){
+					vParTestToggleLED(1);
+					xQueueReceive(zw_tcp_recv_queue, &tcp_char, 100);
+					usart_putchar(EXAMPLE_USART, tcp_char);
 				}
-				for(i = 0; i < len; i++){
-					usart_write_char(EXAMPLE_USART, netbufdata[i]);
-				}
-				usart_write_line(EXAMPLE_USART, "Finished with the chars\n");
+				usart_putchar(EXAMPLE_USART, '\n');
+				usart_write_line(EXAMPLE_USART, "F1\n");
 			}
-			vTaskDelay(100/portTICK_RATE_MS);// Block while there is nothing to .
+			vTaskDelay(10/portTICK_RATE_MS);// Block while there is nothing to .
 		}
 		vParTestToggleLED(0);
 
@@ -297,8 +282,9 @@ portTASK_FUNCTION(vBasicSerialServer, pvParameters)
 			recieved = usart_getchar(EXAMPLE_USART);
 			usart_recv_queue_spoiled = xQueueSend(usart_recv_queue, &recieved, 100);
 		}
-
-		usart_write_line(EXAMPLE_USART, "Finished receiving chars.\n");
+		sprintf(debug, "urq: %d ", (int)uxQueueMessagesWaiting(usart_recv_queue));
+		usart_write_line(EXAMPLE_USART, debug);
+		usart_write_line(EXAMPLE_USART, "F2.\n");
 	}
 
 	//*** Sleep mode
